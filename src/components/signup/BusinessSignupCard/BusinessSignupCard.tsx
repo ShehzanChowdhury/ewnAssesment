@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const BusinessSignupCard = () => (
   <SignupCard
-    icon={<StorefrontIcon color="primary" fontSize="large" />}
+    icon={<StorefrontIcon color="secondary" fontSize="large" />}
     title={
-      <Typography variant="h3" color="primary">
+      <Typography variant="h3" color="secondary">
         Business
       </Typography>
     }
