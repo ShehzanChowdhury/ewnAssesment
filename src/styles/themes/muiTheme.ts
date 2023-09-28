@@ -6,13 +6,18 @@ export default createTheme({
     primary: {
       main: customColors.noriGreen as string,
     },
+    secondary: { main: customColors.noriGreen as string },
     background: {
       default: customColors.offWhite as string,
     },
   },
   typography: {
     h2: {
-      fontSize: "36px",
+      fontSize: "32px",
+      fontWeight: 600,
+    },
+    h3: {
+      fontSize: "22px",
       fontWeight: 600,
     },
     body1: {
