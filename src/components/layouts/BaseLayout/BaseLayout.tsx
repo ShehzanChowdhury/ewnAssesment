@@ -1,18 +1,13 @@
-import { styled } from "@mui/material";
 import { LayoutInterface } from "@/models/types";
 import { Navbar } from "@/components/ui";
 import Footer from "@/components/ui/Footer";
 
-const StyledMain = styled("main")(() => ({
-  height: "100vh",
-}));
-
 const BaseLayout = ({ children }: LayoutInterface) => (
-  <StyledMain>
+  <main>
     <Navbar />
     {children}
     <Footer />
-  </StyledMain>
+  </main>
 );
 
 export default BaseLayout;

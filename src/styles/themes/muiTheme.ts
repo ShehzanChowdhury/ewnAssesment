@@ -10,6 +10,15 @@ export default createTheme({
       default: customColors.offWhite as string,
     },
   },
+  typography: {
+    h2: {
+      fontSize: "36px",
+      fontWeight: 600,
+    },
+    body1: {
+      fontSize: "12px",
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {

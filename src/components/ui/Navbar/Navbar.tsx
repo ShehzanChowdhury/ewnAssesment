@@ -9,7 +9,11 @@ const Navbar = () => {
     <>
       <AppBar
         position="static"
-        sx={{ padding: "0 40px", "& button": { marginLeft: "20px" } }}
+        sx={{
+          padding: "0 40px",
+          height: "65px ",
+          "& button": { marginLeft: "20px" },
+        }}
       >
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

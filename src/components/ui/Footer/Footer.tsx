@@ -2,13 +2,12 @@ import { Typography, styled } from "@mui/material";
 import LanguageSelector from "../LanguageSelector";
 
 const StyledFooter = styled("footer")(({ theme }) => ({
-  position: "absolute",
-  bottom: 0,
   width: "100%",
   background: theme.palette.primary.main,
   color: theme.palette.common.white,
   display: "flex",
-  padding: "10px 65px",
+  padding: "0 65px",
+  height: "60px",
   justifyContent: "space-between",
   alignItems: "center",
   "& div": {
