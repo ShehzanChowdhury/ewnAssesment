@@ -1,4 +1,10 @@
-import { Button } from "@/components/ui";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Link from "next/link";
+import { useState } from "react";
+import { IconButton, FormControl } from "@mui/material";
+import { VisibilityOff, Visibility } from "@mui/icons-material";
+
+import { Button, PasswordInput } from "@/components/ui";
 import {
   Checkbox,
   FormControlLabel,
@@ -6,7 +12,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import Link from "next/link";
+import { SignInInputs } from "@/models/types";
 
 const StyledDiv = styled("div")(() => ({
   display: "flex",
@@ -15,18 +21,44 @@ const StyledDiv = styled("div")(() => ({
   alignItems: "center",
 }));
 
-const SignInForm = () => (
-  <>
-    <TextField label="Email*" variant="outlined" fullWidth />
-    <TextField label="Password*" variant="outlined" fullWidth />
-    <StyledDiv>
-      <FormControlLabel control={<Checkbox />} label="Remember me" />
-      <Link href="#">
-        <Typography> Forgot password?</Typography>
-      </Link>
-    </StyledDiv>
-    <Button fullWidth> Sign In</Button>
-  </>
-);
+const SignInForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInInputs>({});
+
+  const onSubmit: SubmitHandler<SignInInputs> = (data) => {};
+  return (
+    <>
+      <TextField
+        label="Email*"
+        {...register("email", { required: true })}
+        error={!!errors.email}
+        helperText={errors.email && "Email is required."}
+      />
+      <PasswordInput
+        label="Password"
+        register={register}
+        value="password"
+        required={true}
+        error={!!errors.password}
+        helperText={errors.password && "Password is required."}
+      />
+      <StyledDiv>
+        <FormControlLabel
+          control={<Checkbox {...register("remember")} />}
+          label="Remember me"
+        />
+        <Link href="#">
+          <Typography> Forgot password?</Typography>
+        </Link>
+      </StyledDiv>
+      <Button fullWidth onClick={handleSubmit(onSubmit)}>
+        Sign In
+      </Button>
+    </>
+  );
+};
 
 export default SignInForm;

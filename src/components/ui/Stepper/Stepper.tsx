@@ -1,47 +1,39 @@
-import { useCallback } from "react";
-import {
-  Stepper as MuiStepper,
-  Box,
-  Step,
-  StepLabel,
-  Typography,
-} from "@mui/material";
+import { type ReactNode } from "react";
+import { Stepper as MuiStepper, Box, Step, StepLabel } from "@mui/material";
 import { Button } from "..";
-import type { StepInterface } from "@/models/types";
 
 interface StepperInterface {
-  steps: StepInterface[];
+  stepLabels: string[];
   activeStep: number;
   setActiveStep: (...args: any[]) => any;
+  handleNext: (...args: any[]) => any;
+  handleBack: (...args: any[]) => any;
+  handleSubmit: (...args: any[]) => any;
+  children?: ReactNode;
 }
 
-const Stepper = ({ steps, activeStep, setActiveStep }: StepperInterface) => {
-  const handleNext = useCallback(() => {
-    setActiveStep((prevActiveStep: number) => prevActiveStep + 1);
-  }, []);
-
-  const handleBack = useCallback(() => {
-    setActiveStep((prevActiveStep: number) => prevActiveStep - 1);
-  }, []);
-
-  const handleSubmit = useCallback(() => {
-    setActiveStep(0);
-  }, []);
-
+const Stepper = ({
+  stepLabels,
+  activeStep,
+  handleNext,
+  handleBack,
+  handleSubmit,
+  children,
+}: StepperInterface) => {
   return (
     <Box sx={{ width: "100%" }}>
       <MuiStepper activeStep={activeStep} alternativeLabel color="error">
-        {steps.map((step) => {
+        {stepLabels.map((stepLabel) => {
           const stepProps: { completed?: boolean } = {};
           return (
-            <Step key={step.label} {...stepProps}>
-              <StepLabel>{step.label}</StepLabel>
+            <Step key={stepLabel} {...stepProps}>
+              <StepLabel>{stepLabel}</StepLabel>
             </Step>
           );
         })}
       </MuiStepper>
 
-      {steps[activeStep].content}
+      {children}
 
       <Box sx={{ display: "flex", margin: "20px 0" }}>
         <Button
@@ -55,11 +47,13 @@ const Stepper = ({ steps, activeStep, setActiveStep }: StepperInterface) => {
         </Button>
         <Button
           variant="contained"
-          disabled={activeStep === steps.length}
-          onClick={activeStep >= steps.length - 1 ? handleSubmit : handleNext}
+          disabled={activeStep === stepLabels.length}
+          onClick={
+            activeStep >= stepLabels.length - 1 ? handleSubmit : handleNext
+          }
           fullWidth
         >
-          {activeStep >= steps.length - 1 ? "Submit" : "Next"}
+          {activeStep >= stepLabels.length - 1 ? "Submit" : "Next"}
         </Button>
       </Box>
     </Box>

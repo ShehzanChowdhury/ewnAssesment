@@ -31,6 +31,12 @@ export default createTheme({
     },
   },
   components: {
+    MuiTextField: {
+      defaultProps: {
+        fullWidth: true,
+        variant: "outlined",
+      },
+    },
     MuiButton: {
       styleOverrides: {
         contained: {
