@@ -1,5 +1,11 @@
 import { type ReactNode } from "react";
-import { Stepper as MuiStepper, Box, Step, StepLabel } from "@mui/material";
+import {
+  Stepper as MuiStepper,
+  Box,
+  Step,
+  StepLabel,
+  CircularProgress,
+} from "@mui/material";
 import { Button } from "..";
 
 interface StepperInterface {
@@ -9,6 +15,7 @@ interface StepperInterface {
   handleNext: (...args: any[]) => any;
   handleBack: (...args: any[]) => any;
   handleSubmit: (...args: any[]) => any;
+  isDisable: boolean;
   children?: ReactNode;
 }
 
@@ -18,6 +25,7 @@ const Stepper = ({
   handleNext,
   handleBack,
   handleSubmit,
+  isDisable,
   children,
 }: StepperInterface) => {
   return (
@@ -47,13 +55,18 @@ const Stepper = ({
         </Button>
         <Button
           variant="contained"
-          disabled={activeStep === stepLabels.length}
+          disabled={isDisable}
           onClick={
             activeStep >= stepLabels.length - 1 ? handleSubmit : handleNext
           }
           fullWidth
         >
           {activeStep >= stepLabels.length - 1 ? "Submit" : "Next"}
+          {isDisable && (
+            <>
+              ... <CircularProgress size={15} />
+            </>
+          )}
         </Button>
       </Box>
     </Box>

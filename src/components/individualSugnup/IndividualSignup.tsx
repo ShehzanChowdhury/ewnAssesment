@@ -1,20 +1,20 @@
 import { useState, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Alert } from "@mui/material";
 
-import { BusinessSignUpStepLabelEnum } from "@/models/enums";
+import { IndividualSignUpStepLabelEnum } from "@/models/enums";
 import type { BusinessInfoInputs, ContactInfoInputs } from "@/models/types";
 import { SignUpFromCard, Stepper } from "../ui";
 import BusinessInfoForm from "./BusinessInfoForm";
 import ContactInfoForm from "./ContactInfoForm";
 import { SignupPageLayout } from "../layouts";
+import { Alert } from "@mui/material";
 
 const stepLabels: string[] = [
-  BusinessSignUpStepLabelEnum.BUSINESS,
-  BusinessSignUpStepLabelEnum.PERSONAL,
+  IndividualSignUpStepLabelEnum.BUSINESS,
+  IndividualSignUpStepLabelEnum.PERSONAL,
 ];
 
-const BusinessSignup = () => {
+const IndivisualSignup = () => {
   // The following is dummy code to simulate the behavior
   // On submit sets a loading state to check for 5000ms
   const [result, setResult] = useState({
@@ -69,12 +69,12 @@ const BusinessSignup = () => {
 
   return (
     <SignupPageLayout>
-      <SignUpFromCard varient="Business">
-        {result.isError && (
-          <Alert severity="error" onClose={handleAlertClose}>
-            Timeout exceeded of 5s.
-          </Alert>
-        )}
+      {result.isError && (
+        <Alert severity="error" onClose={handleAlertClose}>
+          Timeout exceeded of 5s.
+        </Alert>
+      )}
+      <SignUpFromCard varient="Individual">
         <Stepper
           stepLabels={stepLabels}
           activeStep={activeStep}
@@ -84,13 +84,15 @@ const BusinessSignup = () => {
           handleSubmit={handleStepperSubmit}
           isDisable={result.isLoading}
         >
-          {stepLabels[activeStep] === BusinessSignUpStepLabelEnum.BUSINESS && (
+          {stepLabels[activeStep] ===
+            IndividualSignUpStepLabelEnum.BUSINESS && (
             <BusinessInfoForm
               register={registerBusiness}
               errors={businessErrors}
             />
           )}
-          {stepLabels[activeStep] === BusinessSignUpStepLabelEnum.PERSONAL && (
+          {stepLabels[activeStep] ===
+            IndividualSignUpStepLabelEnum.PERSONAL && (
             <ContactInfoForm
               register={registerContact}
               errors={contactErrors}
@@ -102,4 +104,4 @@ const BusinessSignup = () => {
   );
 };
 
-export default BusinessSignup;
+export default IndivisualSignup;

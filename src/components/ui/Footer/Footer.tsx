@@ -32,7 +32,7 @@ const Footer = () => (
     </div>
     <div>
       <LanguageSelector />
-      <Typography>version 1.0.1</Typography>
+      <Typography>Version 1.0.1</Typography>
     </div>
   </StyledFooter>
 );

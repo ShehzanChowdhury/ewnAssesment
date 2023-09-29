@@ -6,7 +6,6 @@ import {
   styled,
   FormControl,
   InputLabel,
-  InputAdornment,
   type SelectChangeEvent,
 } from "@mui/material";
 import { useState } from "react";
@@ -54,11 +53,6 @@ const ContactInfoForm = ({ register, errors }: ContactInfoFormInterface) => {
         {...register("phone", { required: true })}
         error={!!errors.phone}
         helperText={errors.phone && "Business Name is required."}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">+880</InputAdornment>
-          ),
-        }}
       />
       <TextField
         label="Email*"
