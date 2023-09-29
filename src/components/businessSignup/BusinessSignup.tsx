@@ -69,7 +69,7 @@ const BusinessSignup = () => {
 
   return (
     <SignupPageLayout>
-      <SignUpFromCard varient="Business">
+      <SignUpFromCard variant="Business">
         {result.isError && (
           <Alert severity="error" onClose={handleAlertClose}>
             Timeout exceeded of 5s.

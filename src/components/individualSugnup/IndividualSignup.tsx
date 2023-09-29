@@ -74,7 +74,7 @@ const IndivisualSignup = () => {
           Timeout exceeded of 5s.
         </Alert>
       )}
-      <SignUpFromCard varient="Individual">
+      <SignUpFromCard variant="Individual">
         <Stepper
           stepLabels={stepLabels}
           activeStep={activeStep}

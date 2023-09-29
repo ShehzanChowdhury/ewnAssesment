@@ -3,7 +3,7 @@ import { Card, Typography, styled } from "@mui/material";
 import Link from "next/link";
 
 interface SignUpFromCardInterface {
-  varient: "Individual" | "Business";
+  variant: "Individual" | "Business";
   children: ReactNode;
 }
 
@@ -15,10 +15,10 @@ const StyledCard = styled(Card)(() => ({
   gap: "15px",
 }));
 
-const SignUpFromCard = ({ varient, children }: SignUpFromCardInterface) => (
+const SignUpFromCard = ({ variant, children }: SignUpFromCardInterface) => (
   <StyledCard>
     <Typography variant="h2">Lets Get started with</Typography>
-    <Typography variant="h4">{varient}</Typography>
+    <Typography variant="h4">{variant}</Typography>
     <Typography variant="body1">
       Please provide the following information
     </Typography>

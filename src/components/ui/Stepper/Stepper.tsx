@@ -19,6 +19,24 @@ interface StepperInterface {
   children?: ReactNode;
 }
 
+/**
+ * Stepper Component
+ *
+ * The `Stepper` component is a customizable and user-friendly component that helps guide users through a multi-step process.
+ * It displays a set of steps, allows users to navigate between steps, and provides a button for advancing to the next step or submitting the form.
+ *
+ * @param {string[]} stepLabels - An array of strings representing the labels for each step in the process.
+ * @param {number} activeStep - The current active step. It determines which step is currently displayed and highlighted.
+ * @param {Function} setActiveStep - A callback function to update the active step when navigating between steps.
+ * @param {Function} handleNext - A callback function to handle advancing to the next step when the user clicks the "Next" button.
+ * @param {Function} handleBack - A callback function to handle moving back to the previous stepwhen the user clicks the "Back" button.
+ * @param {Function} handleSubmit - A callback function to handle submitting the form or completing the process when the user clicks the "Submit" button.
+ * @param {boolean} isDisable - A boolean value that determines whether the "Next" button is disabled. When set to `true`, the button is disabled, and a loading spinner is displayed next to it, indicating that an action is in progress.
+ * @param {ReactNode} children - Any additional content or components that you want to include within the `Stepper`. This can be used for displaying step-specific content or forms.
+ *
+ * @returns {JSX.Element} The rendered `Stepper` component.
+ */
+
 const Stepper = ({
   stepLabels,
   activeStep,
